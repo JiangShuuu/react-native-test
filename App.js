@@ -10,7 +10,7 @@ export default function App() {
   }
 
   const addGoalHandler = () => {
-    setCourseGoals([...courseGoals, enteredGoal])
+    setCourseGoals([...courseGoals, {text: enteredGoal, id: Math.random().toString()}])
   }
 
   return (
@@ -27,21 +27,12 @@ export default function App() {
         <FlatList data={courseGoals} renderItem={(itemData) => {
           return (
             <View style={styles.goalItem}>
-              <Text style={styles.goalText}>{itemData.item}</Text>
+              <Text style={styles.goalText}>{itemData.item.text}</Text>
             </View>
           )
-        }} alwaysBounceVertical={false} />
-          {/* {
-            courseGoals ? 
-              courseGoals.map((item, idx) => {
-                return (
-                  <View style={styles.goalItem} key={idx}>
-                    <Text style={styles.goalText}>{item}</Text>
-                  </View>
-                )
-              })
-            : <Text>List of goals...</Text>
-          } */}
+        }} 
+          alwaysBounceVertical={false} 
+        />
       </View>
     </View>
   );
