@@ -1,0 +1,7 @@
+import { TextInput, Button, View } from 'react-native'
+
+export default function StartGameScreen() {
+  return (
+    <View><TextInput />BUTTONS</View>
+  )
+}
