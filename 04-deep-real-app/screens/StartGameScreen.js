@@ -3,9 +3,9 @@ import PrimaryButton from '../components/ui/PrimaryButton'
 import { useState } from 'react'
 import Colors from '../constants/colors'
 
-export default function StartGameScreen({onPickNumber}) {
+export default function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState('')
-  
+
   const numberInputHandler = (enteredText) => {
     setEnteredNumber(enteredText)
   }
@@ -18,7 +18,11 @@ export default function StartGameScreen({onPickNumber}) {
     const chosenNumber = parseInt(enteredNumber)
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
-      Alert.alert('Ivalid number!', 'Number has to be a number between 1 to 99', [{ text: 'Okey', style: 'destructive', onPress: resetInputHandler }])
+      Alert.alert(
+        'Ivalid number!',
+        'Number has to be a number between 1 to 99',
+        [{ text: 'Okey', style: 'destructive', onPress: resetInputHandler }]
+      )
       return
     }
 
@@ -27,7 +31,15 @@ export default function StartGameScreen({onPickNumber}) {
 
   return (
     <View style={styles.inputContainer}>
-      <TextInput onChangeText={numberInputHandler} keyboardType="number-pad" style={styles.numberInput} maxLength={2} autoCapitalize="none" autoCorrect={false} value={enteredNumber} />
+      <TextInput
+        onChangeText={numberInputHandler}
+        keyboardType="number-pad"
+        style={styles.numberInput}
+        maxLength={2}
+        autoCapitalize="none"
+        autoCorrect={false}
+        value={enteredNumber}
+      />
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
           <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
@@ -53,7 +65,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
-    shadowOpacity: 0.25
+    shadowOpacity: 0.25,
   },
   numberInput: {
     height: 50,
@@ -64,12 +76,12 @@ const styles = StyleSheet.create({
     color: Colors.accent500,
     marginVertical: 8,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   buttonsContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   buttonContainer: {
-    flex: 1
-  }
+    flex: 1,
+  },
 })

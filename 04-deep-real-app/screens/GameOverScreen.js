@@ -4,4 +4,4 @@ function GameOverScreen() {
   return <Text>Game is Over!</Text>
 }
 
-export default GameOverScreen;
+export default GameOverScreen
