@@ -1,4 +1,4 @@
-import { View, StyleSheet, Alert, Text, FileList } from 'react-native'
+import { View, StyleSheet, Alert, Text, FlatList } from 'react-native'
 import { useState, useEffect } from 'react'
 import Title from '../components/ui/Title'
 import NumberContainer from '../components/game/NumberContainer'
@@ -28,7 +28,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      onGameOver()
+      onGameOver(guessRounds.length)
     }
   }, [currentGuess, userNumber, onGameOver])
 
@@ -88,14 +88,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
         </View>
       </Card>
       <View>
-        {guessRounds.map((guessRound) => (
-          <GuessLogItem
-            key={guessRound}
-            roundNumber={guessRoundsListLength - guessRound}
-            guess={guessRound}
-          />
-        ))}
-        {/* <FileList
+        <FlatList
           data={guessRounds}
           renderItem={(itemData) => (
             <GuessLogItem
@@ -104,7 +97,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
             />
           )}
           keyExtractor={(item) => item}
-        /> */}
+        />
       </View>
     </View>
   )
@@ -123,5 +116,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  listContainer: {
+    flex: 1,
+    padding: 16,
   },
 })
