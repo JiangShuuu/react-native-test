@@ -10,10 +10,22 @@ function renderCategoryItem(itemData) {
 
 export default function CategoriesScreen() {
   return (
-    <FlatList
-      data={CATEGORIES}
-      keyExtractor={(item) => item.id}
-      renderItem={renderCategoryItem}
-    />
+    <>
+      {CATEGORIES.length === 2 ? (
+        <FlatList
+          data={CATEGORIES}
+          keyExtractor={(item) => item.id}
+          renderItem={renderCategoryItem}
+          numColumns={1}
+        />
+      ) : (
+        <FlatList
+          data={CATEGORIES}
+          keyExtractor={(item) => item.id}
+          renderItem={renderCategoryItem}
+          numColumns={2}
+        />
+      )}
+    </>
   )
 }

@@ -3,7 +3,12 @@ import { StyleSheet } from 'react-native'
 import CategoriesScreen from './screens/CategoriesScreen'
 
 export default function App() {
-  return <CategoriesScreen></CategoriesScreen>
+  return (
+    <>
+      <StatusBar style="light" />
+      <CategoriesScreen></CategoriesScreen>
+    </>
+  )
 }
 
 const styles = StyleSheet.create({
