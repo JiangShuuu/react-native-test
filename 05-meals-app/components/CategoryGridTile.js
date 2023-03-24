@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   innerContainer: {
-    // flex: 0,
+    // flex: 1,
     height: '100%',
     padding: 16,
     borderRadius: 8,
