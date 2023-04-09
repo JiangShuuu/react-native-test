@@ -9,6 +9,7 @@ export default function AllExpenses() {
     <ExpensesOutput
       expenses={expensesCtx.expenses}
       expensesPeriod="Last 7 Days"
+      fallbackText="No registered expenses found!"
     />
   )
 }
