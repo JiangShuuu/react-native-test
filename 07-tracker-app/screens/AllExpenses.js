@@ -1,5 +1,14 @@
+import { useContext } from 'react'
 import ExpensesOutput from '../components/Expenses/ExpensesOutput'
+import { ExpensesContext } from '../store/expenses-context'
 
 export default function AllExpenses() {
-  return <ExpensesOutput expensesPeriod="Last 7 Days" />
+  const expensesCtx = useContext(ExpensesContext)
+
+  return (
+    <ExpensesOutput
+      expenses={expensesCtx.expenses}
+      expensesPeriod="Last 7 Days"
+    />
+  )
 }

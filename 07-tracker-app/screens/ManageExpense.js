@@ -15,10 +15,17 @@ export default function ManageExpense({ navigation, route }) {
     })
   }, [navigation, isEditing])
 
-  const deleteExpenseHandler = () => {}
+  const deleteExpenseHandler = () => {
+    navigation.goBack()
+  }
 
-  const cancelHandler = () => {}
-  const confirmHandler = () => {}
+  const cancelHandler = () => {
+    navigation.goBack()
+  }
+
+  const confirmHandler = () => {
+    navigation.goBack()
+  }
 
   return (
     <View style={styles.container}>
