@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 
-export default function ExpensesSummary({ periodName }) {
+export default function ExpensesSummary({ periodName, expenses }) {
   const expensesSum = expenses.reduce((sum, expense) => {
     return sum + expense.amount
   }, 0)
