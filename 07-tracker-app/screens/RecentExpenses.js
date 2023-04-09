@@ -10,7 +10,7 @@ export default function RecentExpenses() {
     const today = new Date()
     const date7DaysAge = getDateMinusDays(today, 7)
 
-    return expense.date > date7DaysAge
+    return expense.date > date7DaysAge && expense.date <= today
   })
 
   return (
