@@ -1,9 +1,10 @@
+import { useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
 import Input from './input'
-import { useState } from 'react'
+import Button from '../UI/Button'
 
-export default function ExpenseForm() {
+export default function ExpenseForm({ onSubmit, submitButtonLabel, onCancel }) {
   const [inputValues, setInputValues] = useState({
     amount: '',
     date: '',
@@ -11,12 +12,22 @@ export default function ExpenseForm() {
   })
 
   const inputChangesHandler = (inputIdentifier, enteredValue) => {
-    setAmountValue((prev) => {
+    setInputValues((prev) => {
       return {
         ...prev,
         [inputIdentifier]: enteredValue,
       }
     })
+  }
+
+  const submitHandler = () => {
+    const expenseData = {
+      description: inputValues.description,
+      amount: +inputValues.amount,
+      date: new Date(inputValues.date),
+    }
+
+    onSubmit(expenseData)
   }
 
   return (
@@ -53,6 +64,14 @@ export default function ExpenseForm() {
           value: inputValues.description,
         }}
       />
+      <View style={styles.buttons}>
+        <Button style={styles.button} mode="flat" onPress={onCancel}>
+          Cancel
+        </Button>
+        <Button style={styles.button} onPress={submitHandler}>
+          {submitButtonLabel}
+        </Button>
+      </View>
     </View>
   )
 }
@@ -74,5 +93,14 @@ const styles = StyleSheet.create({
     color: 'white',
     marginVertical: 24,
     textAlign: 'center',
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    minWidth: 120,
+    marginHorizontal: 8,
   },
 })
